@@ -205,5 +205,8 @@ public enum SFXType
     PlayerGetItem,
     PlayerGetItem2,
     PlayerFootStep,
-    EnemyAttack
+    EnemyAttack,
+    EnemyDamage,
+    UIPause,
+    UIUnpause
 }

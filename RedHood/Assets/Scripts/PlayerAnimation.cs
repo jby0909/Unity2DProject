@@ -13,6 +13,8 @@ public class PlayerAnimation : MonoBehaviour
     {
         animator.SetTrigger("Attack");
     }
+
+    
     public void SetWalking(bool isWalking)
     {
         animator.SetBool("IsWalking", isWalking);

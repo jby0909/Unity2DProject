@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bread
   - DeathZone
+  - PlayerAttack
   layers:
   - Default
   - TransparentFX

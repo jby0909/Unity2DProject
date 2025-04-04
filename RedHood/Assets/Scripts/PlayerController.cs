@@ -7,6 +7,9 @@ public class PlayerController : MonoBehaviour
     private PlayerHealth health;
 
     private Vector3 StartPlayerPos;
+    private bool isPaused = false;
+    public GameObject pauseMenuUI;
+
 
     private void Awake()
     {
@@ -26,7 +29,35 @@ public class PlayerController : MonoBehaviour
         {
             attack.PerformAttack();
         }
+
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            if(isPaused)
+            {
+                ReGame();
+            }
+            else
+            {
+                Pause();
+            }
+        }
         
+    }
+
+    public void Pause()
+    {
+        pauseMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+        isPaused = true;
+        SoundManager.Instance.PlaySFX(SFXType.UIPause);
+    }
+
+    public void ReGame()
+    {
+        pauseMenuUI.SetActive(false);
+        Time.timeScale = 1.0f;
+        isPaused = false;
+        SoundManager.Instance.PlaySFX(SFXType.UIUnpause);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
