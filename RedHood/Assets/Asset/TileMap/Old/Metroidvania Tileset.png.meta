@@ -260,7 +260,12 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Metroidvania Tileset_0: 4411991590033961921
+      Metroidvania Tileset_1: 7825845791373157169
+      Metroidvania Tileset_2: -1968401132489751032
+      Metroidvania Tileset_3: 6583269372442275396
+      Metroidvania Tileset_4: 2138941772721999023
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

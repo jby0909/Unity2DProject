@@ -14,7 +14,7 @@ public class PlayerAnimation : MonoBehaviour
         animator.SetTrigger("Attack");
     }
 
-    
+
     public void SetWalking(bool isWalking)
     {
         animator.SetBool("IsWalking", isWalking);
@@ -22,14 +22,13 @@ public class PlayerAnimation : MonoBehaviour
 
     public void SetJumping(bool isJumping)
     {
-        animator.ResetTrigger("Land");
         animator.SetBool("IsJumping", isJumping);
     }
 
     public void SetFalling(bool isFalling)
     {
         AnimatorStateInfo info = animator.GetCurrentAnimatorStateInfo(0);
-        if(info.IsName("PlayerJumpMiddleAni") == true)
+        if (info.IsName("PlayerJumpMiddleAni") == true)
         {
             return;
         }
@@ -43,7 +42,30 @@ public class PlayerAnimation : MonoBehaviour
         animator.SetBool("IsJumping", false);
         animator.SetBool("IsFalling", false);
     }
+    public void ResetJumpState()
+    {
+        animator.ResetTrigger("Land");
+        animator.SetBool("IsJumping", false);
+        animator.SetBool("IsFalling", false);
+    }
 
+    public void TriggerDead()
+    {
+        animator.SetTrigger("Dead");
+    }
+
+    public bool IsJumpState()
+    {
+        AnimatorStateInfo info = animator.GetCurrentAnimatorStateInfo(0);
+        if (info.IsName("PlayerJumpStartAni") || info.IsName("PlayerJumpMiddleAni"))
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    #region OnAnimationEvent
     public void PlayerFootStepSound()
     {
         SoundManager.Instance.PlaySFX(SFXType.PlayerFootStep);
@@ -53,4 +75,5 @@ public class PlayerAnimation : MonoBehaviour
     {
         SoundManager.Instance.PlaySFX(SFXType.PlayerAttack);
     }
+    #endregion
 }

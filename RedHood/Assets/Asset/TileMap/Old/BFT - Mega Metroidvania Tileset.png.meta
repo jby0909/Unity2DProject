@@ -285,7 +285,13 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      BFT - Mega Metroidvania Tileset_0: 2876519652064082050
+      BFT - Mega Metroidvania Tileset_1: -3565388522214744147
+      BFT - Mega Metroidvania Tileset_2: -345462918005475936
+      BFT - Mega Metroidvania Tileset_3: 571554718375776769
+      BFT - Mega Metroidvania Tileset_4: -188511386300886355
+      BFT - Mega Metroidvania Tileset_5: -7105393290257984000
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

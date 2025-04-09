@@ -185,7 +185,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Metroidvania Brick Tile (1)_0: 6891017850533912716
+      Metroidvania Brick Tile (1)_1: -7442833041110920108
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      BFT - Minish Cap Tileset (1)_0: 439317607702504233
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

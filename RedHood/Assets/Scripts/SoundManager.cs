@@ -90,6 +90,10 @@ public class SoundManager : MonoBehaviour
         {
             PlayBGM(BGMType.Boss, 1f);
         }
+        else if(scene.name == "Menu")
+        {
+            PlayBGM(BGMType.Menu, 1f);
+        }
     }
 
     public void PlaySFX(SFXType type) //효과음 재생
@@ -192,7 +196,8 @@ public class SoundManager : MonoBehaviour
 public enum BGMType
 {
     Tutorial,
-    Boss
+    Boss,
+    Menu
 }
 
 
