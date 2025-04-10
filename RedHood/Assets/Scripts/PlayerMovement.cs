@@ -59,14 +59,8 @@ public class PlayerMovement : MonoBehaviour
             }
             else if (isGrounded) //착지상태
             {
-                if(playerAnimation?.IsJumpState() == true)
-                {
-                    playerAnimation?.PlayLanding();
-                }
-                else
-                {
-                    playerAnimation?.ResetJumpState();
-                }
+                playerAnimation?.PlayLanding();
+                
             }
         }
     }

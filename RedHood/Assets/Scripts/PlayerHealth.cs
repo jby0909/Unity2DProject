@@ -2,15 +2,30 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private float maxHp = 50;
+    private float playerHp;
+    public float PlayerHp 
     {
-        
+        get
+        {
+            return playerHp;
+        }
+        set 
+        {
+            if(value <= 0)
+            {
+                playerHp = 0;
+            }
+            else if(value > maxHp)
+            {
+                playerHp = maxHp;
+            }
+            else
+            {
+                playerHp = value;
+            }
+        } 
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
+   
 }

@@ -17,7 +17,7 @@ public class PlayerAttack : MonoBehaviour
     [Header("애니메이션 상태 이름")]
     public string attackStateName = "Attack";
 
-    
+    public int attack = 5;
     
     void Start()
     {

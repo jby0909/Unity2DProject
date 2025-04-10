@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public static PlayerController Instance;
     private PlayerMovement movement;
-    private PlayerAttack attack;
+    public PlayerAttack attack;
     private PlayerHealth health;
 
     //공격받았을 때 알파값 조절 및 무적모드
@@ -42,10 +42,12 @@ public class PlayerController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        health.PlayerHp = 20;
     }
     void Start()
     {
         StartPlayerPos = transform.position;
+        
     }
 
     void Update()
@@ -110,7 +112,7 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    public void OnDamaged()
+    public void OnDamaged(float attack)
     {
         CameraShake shake = Camera.main.GetComponent<CameraShake>();
         if(shake != null)
@@ -121,8 +123,8 @@ public class PlayerController : MonoBehaviour
         }
         if (!isInvincible)
         {
-            //몬스터 부딪히면 hp 깎기 추가
-
+            //몬스터 부딪히면 플레이어 hp 깎기 추가
+            health.PlayerHp -= attack;
 
             SoundManager.Instance.PlaySFX(SFXType.PlayerDamage);
             StartCoroutine(Invincibility());

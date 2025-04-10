@@ -33,21 +33,16 @@ public class PlayerAnimation : MonoBehaviour
             return;
         }
 
+        animator.SetBool("IsJumping", false);
         animator.SetBool("IsFalling", isFalling);
     }
 
     public void PlayLanding()
     {
         animator.SetTrigger("Land");
-        animator.SetBool("IsJumping", false);
         animator.SetBool("IsFalling", false);
     }
-    public void ResetJumpState()
-    {
-        animator.ResetTrigger("Land");
-        animator.SetBool("IsJumping", false);
-        animator.SetBool("IsFalling", false);
-    }
+    
 
     public void TriggerDead()
     {
