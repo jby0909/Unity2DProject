@@ -13,7 +13,7 @@ public class AIManager : MonoBehaviour
     public GameObject monsterPrefab;
     public float spawnRangeX = 10.0f;
     public float spawnRangeY = 5.0f;
-    public int enemyCount = 5;
+    public int enemyCount = 2;
     public Transform[] spawnPoints;
     private float monsterSpeed = 1.0f;
     private float monsterHp = 1.0f;

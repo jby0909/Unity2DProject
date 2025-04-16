@@ -105,7 +105,7 @@ public class MonsterManager : MonoBehaviour
                 stateType = chaseType == 0? StateType.ChaseWalk : StateType.ChaseRun;
                 Debug.Log($"[상태 전환] 추적 상태 : {stateType}");
             }
-            Vector3 directionToPlayer = (player.position - transform.position).normalized;
+            Vector3 directionToPlayer = new Vector3(player.position.x - transform.position.x, 0, 0).normalized;
             float chaseSpeed = stateType == StateType.ChaseRun ? speed * 2 : speed;
             transform.position += directionToPlayer * chaseSpeed * Time.deltaTime;
             return;

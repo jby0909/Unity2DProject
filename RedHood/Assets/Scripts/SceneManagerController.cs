@@ -112,6 +112,11 @@ public class SceneManagerController : MonoBehaviour
 
     }
 
+    public string GetActiveScene()
+    {
+        return SceneManager.GetActiveScene().name;
+    }
+
     public void ExitScene()
     {
         Application.Quit();

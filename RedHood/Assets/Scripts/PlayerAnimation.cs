@@ -49,6 +49,11 @@ public class PlayerAnimation : MonoBehaviour
         animator.SetTrigger("Dead");
     }
 
+    public void TriggerHurt()
+    {
+        animator.SetTrigger("Hurt");
+    }
+
     public bool IsJumpState()
     {
         AnimatorStateInfo info = animator.GetCurrentAnimatorStateInfo(0);

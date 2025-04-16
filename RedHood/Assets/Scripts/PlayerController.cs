@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,9 +10,11 @@ public class PlayerController : MonoBehaviour
     public PlayerAttack attack;
     private PlayerHealth health;
 
+    private PlayerAnimation animation;
+
     //공격받았을 때 알파값 조절 및 무적모드
     private SpriteRenderer spriteRenderer;
-    private Animator animator;
+    //private Animator animator;
     private bool isInvincible = false;
     public float invincibilityDuration = 1.0f;
     //공격받았을 때 뒤로 살짝 밀리게
@@ -23,6 +26,14 @@ public class PlayerController : MonoBehaviour
     private Vector3 StartPlayerPos;
     private bool isPaused = false;
     public GameObject pauseMenuUI;
+
+    //Hp UI
+    public GameObject[] emptyHpUI;
+
+    //죽음 판정
+    private bool isDead = false;
+    private Coroutine deadCoroutine;
+    public GameObject gameOverUI;
 
 
     private void Awake()
@@ -40,9 +51,10 @@ public class PlayerController : MonoBehaviour
         attack = GetComponent<PlayerAttack>();
         health = GetComponent<PlayerHealth>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        animator = GetComponent<Animator>();
+        //animator = GetComponent<Animator>();
+        animation = GetComponent<PlayerAnimation>();
         rb = GetComponent<Rigidbody2D>();
-        health.PlayerHp = 20;
+        health.PlayerHp = 50;
     }
     void Start()
     {
@@ -52,7 +64,12 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if(!isKnockback)
+        if (isDead)
+        {
+            return;
+        }
+
+        if (!isKnockback)
         {
             movement.HandleMovement();
         }
@@ -73,6 +90,16 @@ public class PlayerController : MonoBehaviour
             }
         }
         
+    }
+
+    private void Dead()
+    {
+        isDead = true;
+        animation.TriggerDead();
+        SoundManager.Instance.PlaySFX(SFXType.PlayerDead);
+        StopAllCoroutines();
+        StartCoroutine(GameOverUIActive());
+
     }
 
     public void Pause()
@@ -107,13 +134,19 @@ public class PlayerController : MonoBehaviour
         else if(collision.CompareTag("DeathZone"))
         {
             SoundManager.Instance.PlaySFX(SFXType.PlayerDamage);
+            OnDamaged(10);
             transform.position = StartPlayerPos;
+            
         }
         
     }
 
     public void OnDamaged(float attack)
     {
+        if(isDead)
+        {
+            return;
+        }
         CameraShake shake = Camera.main.GetComponent<CameraShake>();
         if(shake != null)
         {
@@ -124,7 +157,13 @@ public class PlayerController : MonoBehaviour
         if (!isInvincible)
         {
             //몬스터 부딪히면 플레이어 hp 깎기 추가
-            health.PlayerHp -= attack;
+            health.PlayerHp -= (int)attack;
+            UpdateHpUI();
+            if(health.PlayerHp <= 0)
+            {
+                Dead();
+                return;
+            }
 
             SoundManager.Instance.PlaySFX(SFXType.PlayerDamage);
             StartCoroutine(Invincibility());
@@ -132,9 +171,26 @@ public class PlayerController : MonoBehaviour
             Vector2 knockbackDirection = spriteRenderer.flipX ? Vector2.right : Vector2.left;
             rb.linearVelocity = Vector2.zero;
             rb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
-            animator.SetTrigger("Hurt");
+            animation.TriggerHurt();
             StartCoroutine(KnockbackCoroutine());
         }
+    }
+
+    private void UpdateHpUI()
+    {
+        float hpRate = (float)health.PlayerHp / (float)health.MaxHp;
+        int emptyHpUIIndex = (int)(hpRate * 5);
+        Debug.Log($"남은 hp : {health.PlayerHp}/ 비율 : {hpRate}");
+        for(int i = 0; i < emptyHpUIIndex; i++)
+        {
+            emptyHpUI[i].SetActive(false);
+        }
+        for(int i = emptyHpUIIndex; i < emptyHpUI.Length; i++)
+        {
+            emptyHpUI[i].SetActive(true);
+        }
+
+
     }
 
     IEnumerator Invincibility()
@@ -165,5 +221,11 @@ public class PlayerController : MonoBehaviour
         isKnockback = true;
         yield return new WaitForSeconds(knockbackDuration);
         isKnockback = false;
+    }
+
+    IEnumerator GameOverUIActive()
+    {
+        yield return new WaitForSeconds(1.0f);
+        gameOverUI.SetActive(true);
     }
 }

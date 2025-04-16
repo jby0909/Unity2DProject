@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    private float maxHp = 50;
-    private float playerHp;
-    public float PlayerHp 
+    private int maxHp = 50;
+    private int playerHp;
+    public int PlayerHp 
     {
         get
         {
@@ -26,6 +26,8 @@ public class PlayerHealth : MonoBehaviour
             }
         } 
     }
+
+    public int MaxHp { get { return maxHp; } }
     
    
 }
