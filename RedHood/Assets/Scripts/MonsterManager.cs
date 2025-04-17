@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -28,7 +29,7 @@ public class MonsterManager : MonoBehaviour
     public float monsterHp = 10.0f;
 
     public float speed = 1.0f;
-    public float maxDistance = 3.0f;
+    public float maxDistance = 2.0f;
     private Vector3 startPos;
     private int direction = 1;
     public GroundType currentGroundType;
@@ -49,6 +50,12 @@ public class MonsterManager : MonoBehaviour
     private bool isDead = false;
     private Coroutine deadCoroutine;
 
+    //몬스터 죽을 때 발생시킬 이벤트
+    public static event Action onMonsterDied;
+
+    //공격받았을 때 잠시 멈춰있게(플레이어를 쫓아가지 않게) 만들 변수
+    private bool isStop = false;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -59,7 +66,7 @@ public class MonsterManager : MonoBehaviour
         objectRenderer = GetComponent<Renderer>();
         originalColor = objectRenderer.material.color;
         startPos = transform.position;
-        int randomChoice = Random.Range(0, 2);
+        int randomChoice = UnityEngine.Random.Range(0, 2);
         if(player == null)
         {
             player = GameObject.FindGameObjectWithTag("Player")?.transform;
@@ -77,6 +84,10 @@ public class MonsterManager : MonoBehaviour
             Dead();
             return;
         }
+        if(isStop)
+        {
+            return;
+        }
 
         if (monsterType == MonsterType.None || player == null) return;
 
@@ -86,7 +97,11 @@ public class MonsterManager : MonoBehaviour
         {
             if (stateType != StateType.Attack)
             {
-                StopAllCoroutines();
+                //StopAllCoroutines();
+                if (stateChangeRoutine != null)
+                {
+                    StopCoroutine(stateChangeRoutine);
+                }
                 stateType = StateType.StrongAttack;
                 StartCoroutine(AttackRoutine());
             }
@@ -101,11 +116,12 @@ public class MonsterManager : MonoBehaviour
                     StopCoroutine(stateChangeRoutine);
                 }
 
-                int chaseType = Random.Range(0, 2);
+                int chaseType = UnityEngine.Random.Range(0, 2);
                 stateType = chaseType == 0? StateType.ChaseWalk : StateType.ChaseRun;
                 Debug.Log($"[상태 전환] 추적 상태 : {stateType}");
             }
             Vector3 directionToPlayer = new Vector3(player.position.x - transform.position.x, 0, 0).normalized;
+            //Vector3 directionToPlayer = (player.position - transform.position + new Vector3(0, 1, 0)).normalized;
             float chaseSpeed = stateType == StateType.ChaseRun ? speed * 2 : speed;
             transform.position += directionToPlayer * chaseSpeed * Time.deltaTime;
             return;
@@ -167,6 +183,10 @@ public class MonsterManager : MonoBehaviour
         {
             return;
         }
+        if(onMonsterDied != null)
+        {
+            onMonsterDied.Invoke();
+        }
         animator.SetTrigger("Dead");
         StopAllCoroutines();
         deadCoroutine = StartCoroutine(DestroyObject());
@@ -181,6 +201,7 @@ public class MonsterManager : MonoBehaviour
             {
                 shake.GenerateCameraImpulse(); //시네머신으로 카메라 쉐이킹 구현하기
             }
+            StartCoroutine(StopMove());
             StartCoroutine(ChangeColorTemporatily());
 
             //플레이어 공격받으면 몬스터 hp깎기
@@ -197,7 +218,15 @@ public class MonsterManager : MonoBehaviour
             {
                 player.OnDamaged(damage);
             }
+            StartCoroutine(StopMove());
         }
+    }
+
+    IEnumerator StopMove()
+    {
+        isStop = true;
+        yield return new WaitForSeconds(1.0f);
+        isStop = false;
     }
 
     IEnumerator ChangeColorTemporatily()
@@ -213,7 +242,7 @@ public class MonsterManager : MonoBehaviour
         while(true)
         {
             yield return new WaitForSeconds(stateChangeInterval);
-            int randomState = Random.Range(0, 3);
+            int randomState = UnityEngine.Random.Range(0, 3);
             stateType = (StateType)randomState;
             Debug.Log($"[랜덤 상태 전환] 현재 상태 : {stateType}");
         }

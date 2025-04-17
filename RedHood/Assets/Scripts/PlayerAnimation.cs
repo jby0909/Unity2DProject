@@ -14,6 +14,10 @@ public class PlayerAnimation : MonoBehaviour
         animator.SetTrigger("Attack");
     }
 
+    public void TriggerStrongAttack()
+    {
+        animator.SetTrigger("StrongAttack");
+    }
 
     public void SetWalking(bool isWalking)
     {

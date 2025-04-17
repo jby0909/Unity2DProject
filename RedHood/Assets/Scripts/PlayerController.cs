@@ -1,7 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     public GameObject pauseMenuUI;
 
     //Hp UI
-    public GameObject[] emptyHpUI;
+    public Slider HpBarUI;
 
     //죽음 판정
     private bool isDead = false;
@@ -76,6 +76,10 @@ public class PlayerController : MonoBehaviour
         if(Input.GetButtonDown("Fire1") && !isKnockback)
         {
             attack.PerformAttack();
+        }
+        if(Input.GetMouseButtonDown(1))
+        {
+            attack.PerformStrongAttack();
         }
 
         if(Input.GetKeyDown(KeyCode.Escape))
@@ -179,18 +183,8 @@ public class PlayerController : MonoBehaviour
     private void UpdateHpUI()
     {
         float hpRate = (float)health.PlayerHp / (float)health.MaxHp;
-        int emptyHpUIIndex = (int)(hpRate * 5);
         Debug.Log($"남은 hp : {health.PlayerHp}/ 비율 : {hpRate}");
-        for(int i = 0; i < emptyHpUIIndex; i++)
-        {
-            emptyHpUI[i].SetActive(false);
-        }
-        for(int i = emptyHpUIIndex; i < emptyHpUI.Length; i++)
-        {
-            emptyHpUI[i].SetActive(true);
-        }
-
-
+        HpBarUI.value = hpRate;
     }
 
     IEnumerator Invincibility()

@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 2467752761715717041}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -5.018, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -125,12 +125,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorChangeDuration: 0.5
-  monsterHp: 1.0632755
-  speed: 6.839361
-  maxDistance: 3
+  monsterHp: 15.149844
+  speed: 2.7957072
+  maxDistance: 2
   currentGroundType: 1
   monsterType: 2
-  damage: 7.354058
+  damage: 8.970943
   stateType: 1
   player: {fileID: 0}
   chaseRange: 5

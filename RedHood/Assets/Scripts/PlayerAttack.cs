@@ -1,8 +1,8 @@
-using NUnit.Framework;
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Cinemachine;
 using UnityEngine;
+
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -12,17 +12,35 @@ public class PlayerAttack : MonoBehaviour
 
     private bool isAttacking = false;
 
-    
-
     [Header("애니메이션 상태 이름")]
     public string attackStateName = "Attack";
 
     public int attack = 5;
+
+    //3단공격 관련 변수(몬스터 3마리 죽이면 공격 가능)
     
+    private int playerMp = 0;
+    private int maxPlayerMp = 3;
+    public GameObject[] mpUI;
+
+
+
     void Start()
     {
         playerAnimation = GetComponent<PlayerAnimation>();
         animator = GetComponent<Animator>();
+        MonsterManager.onMonsterDied += AddPlayerMp;
+    }
+
+    private void AddPlayerMp()
+    {
+        if(playerMp >= maxPlayerMp)
+        {
+            playerMp = maxPlayerMp;
+            return;
+        }
+        playerMp++;
+        UpdateMpUI();
     }
 
     public void PerformAttack()
@@ -36,13 +54,43 @@ public class PlayerAttack : MonoBehaviour
             playerAnimation.TriggerAttack();
             
         }
+        attackStateName = "Attack";
         StartCoroutine(AttackCooldownByAnimation());
+    }
+
+    public void PerformStrongAttack()
+    {
+        if(playerMp < maxPlayerMp || isAttacking)
+        {
+            return;
+        }
+        if (playerAnimation != null)
+        {
+            playerAnimation.TriggerStrongAttack();
+
+        }
+        playerMp = 0;
+        UpdateMpUI();
+        attackStateName = "StrongAttack";
+        StartCoroutine(AttackCooldownByAnimation());
+    }
+
+    private void UpdateMpUI()
+    {
+        for(int i = 0; i < playerMp; i++)
+        {
+            mpUI[i].SetActive(true);
+        }
+        for(int i = playerMp; i < maxPlayerMp; i++)
+        {
+            mpUI[i].SetActive(false);
+        }
     }
 
     private IEnumerator AttackCooldownByAnimation()
     {
         isAttacking = true;
-        //StartCoroutine(Shake(shakeDuration, shakeMagnitude)); //카메라 쉐이킹 코드로 ㄱ루현한 부분
+        //StartCoroutine(Shake(shakeDuration, shakeMagnitude)); //카메라 쉐이킹 코드로 구현한 부분
         
         //ParticleManager.Instance.ParticlePlay(ParticleType.PlayerAttack, transform.position, new Vector3(3, 3, 0));
 
@@ -61,6 +109,8 @@ public class PlayerAttack : MonoBehaviour
 
         isAttacking = false;
     }
+
+    
 
     public void AttackStart()
     {
