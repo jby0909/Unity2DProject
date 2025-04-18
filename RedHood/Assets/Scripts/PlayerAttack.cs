@@ -23,6 +23,7 @@ public class PlayerAttack : MonoBehaviour
     private int maxPlayerMp = 3;
     public GameObject[] mpUI;
 
+    public event Action onPlayerMpTutorial;
 
 
     void Start()
@@ -36,10 +37,15 @@ public class PlayerAttack : MonoBehaviour
     {
         if(playerMp >= maxPlayerMp)
         {
+            
             playerMp = maxPlayerMp;
             return;
         }
         playerMp++;
+        if(playerMp == maxPlayerMp)
+        {
+            onPlayerMpTutorial?.Invoke();
+        }
         UpdateMpUI();
     }
 
@@ -69,6 +75,7 @@ public class PlayerAttack : MonoBehaviour
             playerAnimation.TriggerStrongAttack();
 
         }
+        onPlayerMpTutorial?.Invoke();
         playerMp = 0;
         UpdateMpUI();
         attackStateName = "StrongAttack";
