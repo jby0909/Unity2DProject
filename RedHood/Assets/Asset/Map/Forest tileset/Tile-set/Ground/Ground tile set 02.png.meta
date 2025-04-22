@@ -178,6 +178,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -722,7 +735,31 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Ground tile set 02_0: -6785315000483636803
+      Ground tile set 02_1: -8136186760492316561
+      Ground tile set 02_10: -4330058255440138235
+      Ground tile set 02_11: -3543095036278653224
+      Ground tile set 02_12: -3992437277438539258
+      Ground tile set 02_13: 7997436457128401390
+      Ground tile set 02_14: 3963910984413664285
+      Ground tile set 02_15: -1303356857632273248
+      Ground tile set 02_16: 1715436580318414928
+      Ground tile set 02_17: -1904666250433284072
+      Ground tile set 02_18: -9025292271281505680
+      Ground tile set 02_19: 7597980404273870254
+      Ground tile set 02_2: 5185809373939016761
+      Ground tile set 02_20: 8036685601006545578
+      Ground tile set 02_21: -1736855857490444118
+      Ground tile set 02_22: -3073076924265658410
+      Ground tile set 02_23: 371043553227723453
+      Ground tile set 02_3: 9214918447695071456
+      Ground tile set 02_4: -5260315089827174913
+      Ground tile set 02_5: 8816518208927778186
+      Ground tile set 02_6: 8632959853872145448
+      Ground tile set 02_7: 2023822650333222773
+      Ground tile set 02_8: -7621757396064671505
+      Ground tile set 02_9: -5558411647728602881
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

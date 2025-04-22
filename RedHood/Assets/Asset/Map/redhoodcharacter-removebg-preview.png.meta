@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: ec33d08953654524ebe6bafac689baf3
+guid: a96ad556b7efab34b90565a49b9ea3bc
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6264317129827784194
-    second: BarV1_Bar_0
+      213: 8637559806175733111
+    second: redhoodcharacter-removebg-preview_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BarV1_Bar_0
+      name: redhoodcharacter-removebg-preview_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1
         y: 0
-        width: 272
-        height: 21
+        width: 71
+        height: 62
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 20697c36d335fe650800000000000000
-      internalID: 6264317129827784194
+      spriteID: 775eb4541e6ced770800000000000000
+      internalID: 8637559806175733111
       vertices: []
       indices: 
       edges: []
@@ -160,8 +160,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      BarV1_Bar_0: 6264317129827784194
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

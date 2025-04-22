@@ -201,6 +201,7 @@ public class MonsterManager : MonoBehaviour
             {
                 shake.GenerateCameraImpulse(); //시네머신으로 카메라 쉐이킹 구현하기
             }
+            animator.SetTrigger("Damage");
             StartCoroutine(StopMove());
             StartCoroutine(ChangeColorTemporatily());
 

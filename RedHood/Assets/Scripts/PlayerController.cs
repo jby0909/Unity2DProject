@@ -132,7 +132,7 @@ public class PlayerController : MonoBehaviour
     {
         if(collision.CompareTag("Bread"))
         {
-            GameManager.Instance.AddCoin(10);
+            GameManager.Instance.AddBread();
             Destroy(collision.gameObject);
         }
         else if(collision.CompareTag("DeathZone"))

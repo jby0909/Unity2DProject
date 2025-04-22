@@ -7,7 +7,10 @@ public class GameManager : MonoBehaviour
 
     public int coinCount = 0;
 
+    public int breadCount = 0;
+
     public Text coinText;
+    public Text breadText;
 
     private const string COIN_KEY = "CoinCount";
     private const string DAMAGE_KEY = "PlayerDamage";
@@ -35,6 +38,13 @@ public class GameManager : MonoBehaviour
         SaveCoin();
         SoundManager.Instance.PlaySFX(SFXType.PlayerGetItem2);
         
+    }
+
+    public void AddBread()
+    {
+        breadCount++;
+        breadText.text = breadCount.ToString();
+        SoundManager.Instance.PlaySFX(SFXType.PlayerGetItem2);
     }
 
     public bool UseCoin(int amount)
