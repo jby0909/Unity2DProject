@@ -6,6 +6,7 @@ public class PlayerEvent : MonoBehaviour
     public GameObject SpaceKeyObj;
     public GameObject LeftMouseObj;
     public GameObject RightMouseObj;
+    
 
     private void Start()
     {
@@ -13,6 +14,10 @@ public class PlayerEvent : MonoBehaviour
     }
     public void OnPlayerMpFullTutorialUI()
     {
+        if(!SceneManagerController.Instance.isTutorial)
+        {
+            return;
+        }
         RightMouseObj?.SetActive(true);
         PlayerController.Instance.attack.onPlayerMpTutorial -= OnPlayerMpFullTutorialUI;
         PlayerController.Instance.attack.onPlayerMpTutorial += OnPlayerMpUseTutorialUI;
@@ -20,12 +25,20 @@ public class PlayerEvent : MonoBehaviour
 
     public void OnPlayerMpUseTutorialUI()
     {
+        if (!SceneManagerController.Instance.isTutorial)
+        {
+            return;
+        }
         RightMouseObj?.SetActive(false);
         PlayerController.Instance.attack.onPlayerMpTutorial -= OnPlayerMpUseTutorialUI;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!SceneManagerController.Instance.isTutorial)
+        {
+            return;
+        }
         if (collision.name == "TutorialEvent1")
         {
             ArrowKeyObj?.SetActive(true);
@@ -42,7 +55,11 @@ public class PlayerEvent : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.name == "TutorialEvent1")
+        if (!SceneManagerController.Instance.isTutorial)
+        {
+            return;
+        }
+        if (collision.name == "TutorialEvent1")
         {
             ArrowKeyObj?.SetActive(false);
         }

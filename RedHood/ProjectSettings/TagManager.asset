@@ -8,6 +8,7 @@ TagManager:
   - DeathZone
   - PlayerAttack
   - Monster
+  - Goal
   layers:
   - Default
   - TransparentFX

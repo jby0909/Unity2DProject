@@ -12,6 +12,15 @@ public class SceneManagerController : MonoBehaviour
     public string nextSceneName;
     private bool isFading = false;
 
+    private string[] sceneNames = { "Menu" ,"Tutorial", "Stage1", "Stage2" };
+    private int sceneNamesIndex = 0;
+
+    public bool isTutorial = false;
+
+    
+    public GameObject menuUI;
+    public GameObject inGameUI;
+
     void Start()
     {
         if(Instance == null)
@@ -30,7 +39,38 @@ public class SceneManagerController : MonoBehaviour
         if(!isFading)
         {
             nextSceneName = sceneName;
+            
+            if(nextSceneName.CompareTo("Menu") == 0)
+            {
+                isTutorial = false;
+                sceneNamesIndex = 0;
+                GameManager.Instance.currentStageLevel = 0;
+                GameObject player = GameObject.FindGameObjectWithTag("Player");
+                menuUI.SetActive(true);
+                inGameUI.SetActive(false);
+                if (player != null)
+                {
+                    Destroy(player);
+                }
+            }
+            else if(nextSceneName != GetActiveScene())
+            {
+                if(nextSceneName.CompareTo("Tutorial") == 0)
+                {
+                    isTutorial = true;
+                }
+                else
+                {
+                    isTutorial = false;
+                }
+                
+                GameManager.Instance.currentStageLevel++;
+                sceneNamesIndex = (sceneNamesIndex+1) % sceneNames.Length;
+                menuUI.SetActive(false);
+                inGameUI.SetActive(true);
+            }
             StartCoroutine(FadeInAndLoadScene());
+            nextSceneName = sceneNames[sceneNamesIndex];
         }
     }
 

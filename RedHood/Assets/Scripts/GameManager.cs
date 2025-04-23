@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,7 +8,10 @@ public class GameManager : MonoBehaviour
 
     public int coinCount = 0;
 
-    public int breadCount = 0;
+    public Dictionary<int, StageData> stageDataDict = new Dictionary<int, StageData>();
+
+    public int currentStageLevel = 0;
+    public int currentBreadCount = 0;
 
     public Text coinText;
     public Text breadText;
@@ -29,6 +33,13 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        StageData[] arr = Resources.LoadAll<StageData>("Data/Stage");
+        foreach (var stage in arr)
+        {
+            stageDataDict[stage.stageLevel] = stage;
+            Debug.Log($"{stage.stageLevel} : {stage.breadCount}");
+        }
     }
 
     public void AddCoin(int amount)
@@ -42,8 +53,8 @@ public class GameManager : MonoBehaviour
 
     public void AddBread()
     {
-        breadCount++;
-        breadText.text = breadCount.ToString();
+        currentBreadCount++;
+        breadText.text = currentBreadCount.ToString();
         SoundManager.Instance.PlaySFX(SFXType.PlayerGetItem2);
     }
 
@@ -104,5 +115,11 @@ public class GameManager : MonoBehaviour
         coinCount = 0;
         coinText.text = coinCount.ToString();
         //PlayerPrefs.SetInt("Coin", coinCount);
+    }
+
+    public void ResetBread()
+    {
+        currentBreadCount = 0;
+        breadText.text = currentBreadCount.ToString();
     }
 }

@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     //공격받았을 때 알파값 조절 및 무적모드
     private SpriteRenderer spriteRenderer;
     //private Animator animator;
-    private bool isInvincible = false;
+    public bool isInvincible = false;
     public float invincibilityDuration = 1.0f;
     //공격받았을 때 뒤로 살짝 밀리게
     public float knockbackForce = 5.0f; 
@@ -34,6 +34,9 @@ public class PlayerController : MonoBehaviour
     private bool isDead = false;
     private Coroutine deadCoroutine;
     public GameObject gameOverUI;
+
+    //빵 부족 시 활성화할 ui
+    public GameObject breadMessageUI;
 
 
     private void Awake()
@@ -142,7 +145,27 @@ public class PlayerController : MonoBehaviour
             transform.position = StartPlayerPos;
             
         }
+        else if(collision.CompareTag("Goal"))
+        {
+            if(GameManager.Instance.currentBreadCount == GameManager.Instance.stageDataDict[GameManager.Instance.currentStageLevel].breadCount)
+            {
+                SoundManager.Instance.PlaySFX(SFXType.ArriveGoal);
+                SceneManagerController.Instance.StartSceneTransition(SceneManagerController.Instance.nextSceneName);
+            }
+            else
+            {
+                //빵 부족하다는 ui 활성화(2초뒤에 사라지기 -> 코루틴으로 구현)
+                StartCoroutine(BreadMessageUIActive());
+            }
+        }
         
+    }
+
+    IEnumerator BreadMessageUIActive()
+    {
+        breadMessageUI.SetActive(true);
+        yield return new WaitForSeconds(2.0f);
+        breadMessageUI.SetActive(false);
     }
 
     public void OnDamaged(float attack)

@@ -11,6 +11,14 @@ public class GroundManager : MonoBehaviour
     void Start()
     {
         startPos = transform.position;
+        if(currentGroundType == GroundType.UpGround || currentGroundType == GroundType.RightGround)
+        {
+            direction = 1;
+        }
+        else if(currentGroundType == GroundType.DownGround || currentGroundType == GroundType.LeftGround)
+        {
+            direction = -1;
+        }
         
     }
 
@@ -19,7 +27,7 @@ public class GroundManager : MonoBehaviour
     {
         
         //위아래 이동
-        if (currentGroundType == GroundType.UpGround)
+        if (currentGroundType == GroundType.UpGround || currentGroundType == GroundType.DownGround)
         {
             if (transform.position.y > startPos.y + maxDistance)
             {
@@ -31,7 +39,7 @@ public class GroundManager : MonoBehaviour
             }
             transform.position += new Vector3(0, speed * direction * Time.deltaTime, 0);
         }
-        else if(currentGroundType == GroundType.RightGround)//좌우이동
+        else if(currentGroundType == GroundType.RightGround || currentGroundType == GroundType.LeftGround)//좌우이동
         {
             if (transform.position.x > startPos.x + maxDistance)
             {
@@ -47,28 +55,30 @@ public class GroundManager : MonoBehaviour
 
     }
 
+
     //발판에 닿으면 닿은 대상(플레이어)를 발판의 자식오브젝트로
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
             collision.transform.SetParent(gameObject.transform);
         }
     }
 
     //발판에서 떨어지면 부딪힌 대상(플레이어)의 부모를 없앰(원래대로)
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnCollisionExit2D(Collision2D collision)
     {
-        if(collision.tag == "Player" && collision.transform.gameObject.activeInHierarchy)
+        if (collision.gameObject.tag == "Player" && collision.transform.gameObject.activeInHierarchy)
         {
             collision.transform.SetParent(null);
         }
     }
-
 }
 
 public enum GroundType
 {
     UpGround,
-    RightGround
+    DownGround,
+    RightGround,
+    LeftGround
 }

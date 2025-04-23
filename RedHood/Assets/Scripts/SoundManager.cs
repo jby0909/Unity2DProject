@@ -220,5 +220,6 @@ public enum SFXType
     EnemyDamage,
     UIPause,
     UIUnpause,
-    UIBuy
+    UIBuy,
+    ArriveGoal
 }

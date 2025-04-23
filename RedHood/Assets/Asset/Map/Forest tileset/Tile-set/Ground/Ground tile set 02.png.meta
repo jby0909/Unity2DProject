@@ -198,12 +198,12 @@ TextureImporter:
       name: Ground tile set 02_0
       rect:
         serializedVersion: 2
-        x: 48
-        y: 160
-        width: 16
-        height: 35
+        x: 49
+        y: 162
+        width: 13
+        height: 36
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -220,12 +220,12 @@ TextureImporter:
       name: Ground tile set 02_1
       rect:
         serializedVersion: 2
-        x: 63
-        y: 160
-        width: 34
-        height: 38
+        x: 65
+        y: 162
+        width: 30
+        height: 36
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -242,12 +242,12 @@ TextureImporter:
       name: Ground tile set 02_2
       rect:
         serializedVersion: 2
-        x: 96
-        y: 160
-        width: 34
-        height: 39
+        x: 98
+        y: 162
+        width: 30
+        height: 36
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -264,12 +264,12 @@ TextureImporter:
       name: Ground tile set 02_3
       rect:
         serializedVersion: 2
-        x: 96
-        y: 127
-        width: 34
-        height: 33
+        x: 97
+        y: 128
+        width: 32
+        height: 31
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -286,12 +286,12 @@ TextureImporter:
       name: Ground tile set 02_4
       rect:
         serializedVersion: 2
-        x: 129
-        y: 160
-        width: 17
-        height: 37
+        x: 131
+        y: 162
+        width: 14
+        height: 36
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -308,12 +308,12 @@ TextureImporter:
       name: Ground tile set 02_5
       rect:
         serializedVersion: 2
-        x: 48
-        y: 127
-        width: 16
-        height: 30
+        x: 49
+        y: 128
+        width: 14
+        height: 31
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -330,12 +330,12 @@ TextureImporter:
       name: Ground tile set 02_6
       rect:
         serializedVersion: 2
-        x: 50
-        y: 99
-        width: 14
-        height: 28
+        x: 51
+        y: 100
+        width: 12
+        height: 27
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -352,12 +352,12 @@ TextureImporter:
       name: Ground tile set 02_7
       rect:
         serializedVersion: 2
-        x: 63
-        y: 127
-        width: 34
+        x: 64
+        y: 128
+        width: 32
         height: 31
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -374,12 +374,12 @@ TextureImporter:
       name: Ground tile set 02_8
       rect:
         serializedVersion: 2
-        x: 63
-        y: 99
-        width: 34
-        height: 28
+        x: 64
+        y: 100
+        width: 32
+        height: 27
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -396,12 +396,12 @@ TextureImporter:
       name: Ground tile set 02_9
       rect:
         serializedVersion: 2
-        x: 96
-        y: 99
-        width: 34
-        height: 28
+        x: 97
+        y: 100
+        width: 32
+        height: 27
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -418,12 +418,12 @@ TextureImporter:
       name: Ground tile set 02_10
       rect:
         serializedVersion: 2
-        x: 129
-        y: 127
-        width: 17
+        x: 130
+        y: 128
+        width: 15
         height: 31
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -440,12 +440,12 @@ TextureImporter:
       name: Ground tile set 02_11
       rect:
         serializedVersion: 2
-        x: 129
-        y: 99
-        width: 14
-        height: 28
+        x: 130
+        y: 100
+        width: 12
+        height: 27
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -462,12 +462,12 @@ TextureImporter:
       name: Ground tile set 02_12
       rect:
         serializedVersion: 2
-        x: 48
-        y: 68
-        width: 16
-        height: 31
+        x: 49
+        y: 70
+        width: 13
+        height: 29
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -484,12 +484,12 @@ TextureImporter:
       name: Ground tile set 02_13
       rect:
         serializedVersion: 2
-        x: 63
-        y: 68
-        width: 34
-        height: 32
+        x: 65
+        y: 70
+        width: 30
+        height: 29
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -506,12 +506,12 @@ TextureImporter:
       name: Ground tile set 02_14
       rect:
         serializedVersion: 2
-        x: 96
-        y: 68
-        width: 34
-        height: 32
+        x: 98
+        y: 70
+        width: 30
+        height: 29
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -528,12 +528,12 @@ TextureImporter:
       name: Ground tile set 02_15
       rect:
         serializedVersion: 2
-        x: 129
-        y: 68
-        width: 16
-        height: 31
+        x: 131
+        y: 70
+        width: 13
+        height: 29
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -550,12 +550,12 @@ TextureImporter:
       name: Ground tile set 02_16
       rect:
         serializedVersion: 2
-        x: 50
-        y: 39
-        width: 14
-        height: 28
+        x: 51
+        y: 40
+        width: 12
+        height: 26
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -572,12 +572,12 @@ TextureImporter:
       name: Ground tile set 02_17
       rect:
         serializedVersion: 2
-        x: 63
-        y: 39
-        width: 34
-        height: 28
+        x: 64
+        y: 40
+        width: 32
+        height: 26
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -594,12 +594,12 @@ TextureImporter:
       name: Ground tile set 02_18
       rect:
         serializedVersion: 2
-        x: 96
-        y: 39
-        width: 34
-        height: 28
+        x: 97
+        y: 40
+        width: 32
+        height: 26
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -616,12 +616,12 @@ TextureImporter:
       name: Ground tile set 02_19
       rect:
         serializedVersion: 2
-        x: 129
-        y: 39
-        width: 14
-        height: 28
+        x: 130
+        y: 40
+        width: 12
+        height: 26
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -638,12 +638,12 @@ TextureImporter:
       name: Ground tile set 02_20
       rect:
         serializedVersion: 2
-        x: 50
-        y: 10
-        width: 14
-        height: 28
+        x: 49
+        y: 11
+        width: 13
+        height: 25
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -660,12 +660,12 @@ TextureImporter:
       name: Ground tile set 02_21
       rect:
         serializedVersion: 2
-        x: 63
-        y: 10
-        width: 34
-        height: 28
+        x: 65
+        y: 11
+        width: 30
+        height: 25
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -682,12 +682,12 @@ TextureImporter:
       name: Ground tile set 02_22
       rect:
         serializedVersion: 2
-        x: 96
-        y: 10
-        width: 34
-        height: 28
+        x: 98
+        y: 11
+        width: 30
+        height: 25
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -704,12 +704,12 @@ TextureImporter:
       name: Ground tile set 02_23
       rect:
         serializedVersion: 2
-        x: 129
-        y: 10
-        width: 14
-        height: 28
+        x: 131
+        y: 11
+        width: 13
+        height: 25
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -726,7 +726,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: cb441d6767572ca4982c20f05ed77e98
     internalID: 0
     vertices: []
     indices: 

@@ -97,6 +97,10 @@ public class PlayerAttack : MonoBehaviour
     private IEnumerator AttackCooldownByAnimation()
     {
         isAttacking = true;
+        if(attackStateName == "StrongAttack")
+        {
+            PlayerController.Instance.isInvincible = true;
+        }
         //StartCoroutine(Shake(shakeDuration, shakeMagnitude)); //카메라 쉐이킹 코드로 구현한 부분
         
         //ParticleManager.Instance.ParticlePlay(ParticleType.PlayerAttack, transform.position, new Vector3(3, 3, 0));
@@ -112,6 +116,11 @@ public class PlayerAttack : MonoBehaviour
         else
         {
             yield return new WaitForSeconds(0.5f);
+        }
+
+        if (attackStateName == "StrongAttack")
+        {
+            PlayerController.Instance.isInvincible = false;
         }
 
         isAttacking = false;
