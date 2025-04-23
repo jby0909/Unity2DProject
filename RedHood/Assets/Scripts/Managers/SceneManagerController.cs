@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,14 +13,19 @@ public class SceneManagerController : MonoBehaviour
     public string nextSceneName;
     private bool isFading = false;
 
-    private string[] sceneNames = { "Menu" ,"Tutorial", "Stage1", "Stage2" };
-    private int sceneNamesIndex = 0;
+    private string[] sceneNames = {"Tutorial", "Stage1", "Stage2" };
+    public int sceneNamesIndex = 0;
 
     public bool isTutorial = false;
 
     
     public GameObject menuUI;
     public GameObject inGameUI;
+    public GameObject mainCamera;
+    public GameObject cinemachineCamera;
+    public GameObject player;
+
+    public event Action sceneOnLoad;
 
     void Start()
     {
@@ -39,38 +45,10 @@ public class SceneManagerController : MonoBehaviour
         if(!isFading)
         {
             nextSceneName = sceneName;
-            
-            if(nextSceneName.CompareTo("Menu") == 0)
-            {
-                isTutorial = false;
-                sceneNamesIndex = 0;
-                GameManager.Instance.currentStageLevel = 0;
-                GameObject player = GameObject.FindGameObjectWithTag("Player");
-                menuUI.SetActive(true);
-                inGameUI.SetActive(false);
-                if (player != null)
-                {
-                    Destroy(player);
-                }
-            }
-            else if(nextSceneName != GetActiveScene())
-            {
-                if(nextSceneName.CompareTo("Tutorial") == 0)
-                {
-                    isTutorial = true;
-                }
-                else
-                {
-                    isTutorial = false;
-                }
-                
-                GameManager.Instance.currentStageLevel++;
-                sceneNamesIndex = (sceneNamesIndex+1) % sceneNames.Length;
-                menuUI.SetActive(false);
-                inGameUI.SetActive(true);
-            }
             StartCoroutine(FadeInAndLoadScene());
-            nextSceneName = sceneNames[sceneNamesIndex];
+           
+            
+            
         }
     }
 
@@ -84,11 +62,61 @@ public class SceneManagerController : MonoBehaviour
 
         yield return StartCoroutine(LoadLoadingAndNextScene());
 
+        if (GetActiveScene().CompareTo("Menu") == 0)
+        {
+            isTutorial = false;
+            sceneNamesIndex = 0;
+            GameManager.Instance.currentStageLevel = 0;
+
+            menuUI.SetActive(true);
+            inGameUI.SetActive(false);
+            cinemachineCamera.SetActive(false);
+            player.SetActive(false);
+            //모든 값 리셋
+            PlayerController.Instance.movement.ResetPosition();
+            PlayerController.Instance.health.ResetHp();
+            PlayerController.Instance.attack.ResetMp();
+            GameManager.Instance.ResetBread();
+
+        }
+        else
+        {
+            if (nextSceneName.CompareTo("Tutorial") == 0)
+            {
+                isTutorial = true;
+            }
+            else
+            {
+                isTutorial = false;
+            }
+            if(nextSceneName.CompareTo(GetActiveScene()) != 0)
+            {
+                GameManager.Instance.currentStageLevel++;
+            }
+            
+            sceneNamesIndex = (sceneNamesIndex + 1) % sceneNames.Length;
+            menuUI.SetActive(false);
+            inGameUI.SetActive(true);
+            cinemachineCamera.SetActive(true);
+            player.SetActive(true);
+            //플레이어 위치 시작부분으로 리셋
+            PlayerController.Instance.movement.ResetPosition();
+        }
+        nextSceneName = sceneNames[sceneNamesIndex];
+
+        if(sceneOnLoad != null)
+        {
+            sceneOnLoad.Invoke();
+        }
+        
         yield return StartCoroutine(FadeImage(1, 0, fadeDuration));
 
         isFading = false;
         //패널이 켜져있으면 유아이 클릭이 막히기 때문에 페이드아웃 후 패널을 비활성화함
         panel.gameObject.SetActive(false);
+
+
+        
     }
 
     IEnumerator FadeImage(float startAlpha, float endAlpha, float duration)

@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 794391}
   - component: {fileID: 794393}
   - component: {fileID: 794392}
+  - component: {fileID: 794394}
   m_Layer: 0
   m_Name: CinemachineCamera
   m_TagString: Untagged
@@ -325,6 +326,18 @@ MonoBehaviour:
     FrequencyGain: 1
     Duration: 1
     m_NoiseOffsets: {x: 0, y: 0, z: 0}
+--- !u!114 &794394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 794387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37d493869b88e4e4ba0a36c81a682c12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &39579551
 GameObject:
   m_ObjectHideFlags: 0
@@ -4913,6 +4926,7 @@ GameObject:
   - component: {fileID: 519420030}
   - component: {fileID: 519420033}
   - component: {fileID: 519420034}
+  - component: {fileID: 519420035}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5085,6 +5099,18 @@ MonoBehaviour:
   shakeDuration: 0.5
   shakeMagnitude: 0.1
   impulseSource: {fileID: 794392}
+--- !u!114 &519420035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37d493869b88e4e4ba0a36c81a682c12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &522850595
 GameObject:
   m_ObjectHideFlags: 0
@@ -8403,6 +8429,9 @@ MonoBehaviour:
   panel: {fileID: 1590380635}
   fadeDuration: 1
   nextSceneName: Menu
+  isTutorial: 0
+  menuUI: {fileID: 0}
+  inGameUI: {fileID: 0}
 --- !u!4 &889264002
 Transform:
   m_ObjectHideFlags: 0
@@ -22394,6 +22423,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
+  - {fileID: 794390}
   - {fileID: 1440226706}
   - {fileID: 1136120564}
   - {fileID: 605373165}
@@ -22405,7 +22435,6 @@ SceneRoots:
   - {fileID: 147853895}
   - {fileID: 1476506134}
   - {fileID: 1691841854}
-  - {fileID: 794390}
   - {fileID: 187133656}
   - {fileID: 2026364036}
   - {fileID: 1804932085}

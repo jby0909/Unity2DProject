@@ -170,5 +170,10 @@ public class PlayerAttack : MonoBehaviour
 
     }
 
+    public void ResetMp()
+    {
+        playerMp = 0;
+    }
+
     
 }

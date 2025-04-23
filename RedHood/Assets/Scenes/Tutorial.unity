@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 794391}
   - component: {fileID: 794393}
   - component: {fileID: 794392}
+  - component: {fileID: 794394}
   m_Layer: 0
   m_Name: CinemachineCamera
   m_TagString: Untagged
@@ -325,6 +326,18 @@ MonoBehaviour:
     FrequencyGain: 1
     Duration: 1
     m_NoiseOffsets: {x: 0, y: 0, z: 0}
+--- !u!114 &794394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 794387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37d493869b88e4e4ba0a36c81a682c12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &27337941
 GameObject:
   m_ObjectHideFlags: 0
@@ -6104,6 +6117,7 @@ GameObject:
   - component: {fileID: 519420030}
   - component: {fileID: 519420033}
   - component: {fileID: 519420034}
+  - component: {fileID: 519420035}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -6276,6 +6290,18 @@ MonoBehaviour:
   shakeDuration: 0.5
   shakeMagnitude: 0.1
   impulseSource: {fileID: 794392}
+--- !u!114 &519420035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37d493869b88e4e4ba0a36c81a682c12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &520785580
 GameObject:
   m_ObjectHideFlags: 0
@@ -8125,6 +8151,11 @@ MonoBehaviour:
   fadeDuration: 1
   nextSceneName: Stage1
   isTutorial: 0
+  menuUI: {fileID: 0}
+  inGameUI: {fileID: 0}
+  mainCamera: {fileID: 0}
+  cinemachineCamera: {fileID: 0}
+  player: {fileID: 0}
 --- !u!4 &889264002
 Transform:
   m_ObjectHideFlags: 0
@@ -15951,6 +15982,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: InGameUI
       objectReference: {fileID: 0}
+    - target: {fileID: 8111666251562658604, guid: bbc02bc6863cebc45a3eca1916ef58f9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8245771398737029716, guid: bbc02bc6863cebc45a3eca1916ef58f9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -16077,6 +16112,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2609463353873312800, guid: 1fb07d763c9f8154fb05e455e29d9966, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4208313282719374773, guid: 1fb07d763c9f8154fb05e455e29d9966, type: 3}
       propertyPath: ArrowKeyObj
       value: 
@@ -16167,6 +16206,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
+  - {fileID: 794390}
   - {fileID: 1440226706}
   - {fileID: 1136120564}
   - {fileID: 605373165}
@@ -16179,7 +16219,6 @@ SceneRoots:
   - {fileID: 1872557899866743437}
   - {fileID: 1476506134}
   - {fileID: 1691841854}
-  - {fileID: 794390}
   - {fileID: 4775010263894346193}
   - {fileID: 930072824}
   - {fileID: 187133656}

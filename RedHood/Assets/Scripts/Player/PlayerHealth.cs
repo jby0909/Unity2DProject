@@ -29,5 +29,9 @@ public class PlayerHealth : MonoBehaviour
 
     public int MaxHp { get { return maxHp; } }
     
+    public void ResetHp()
+    {
+        PlayerHp = maxHp;
+    }
    
 }

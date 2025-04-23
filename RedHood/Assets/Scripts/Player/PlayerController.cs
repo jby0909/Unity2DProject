@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController Instance;
-    private PlayerMovement movement;
+    public PlayerMovement movement;
     public PlayerAttack attack;
-    private PlayerHealth health;
+    public PlayerHealth health;
 
     private PlayerAnimation animation;
 
@@ -147,7 +147,7 @@ public class PlayerController : MonoBehaviour
         }
         else if(collision.CompareTag("Goal"))
         {
-            if(GameManager.Instance.currentBreadCount == GameManager.Instance.stageDataDict[GameManager.Instance.currentStageLevel].breadCount)
+            if(GameManager.Instance.currentBreadCount >= GameManager.Instance.stageDataDict[GameManager.Instance.currentStageLevel].breadCount)
             {
                 SoundManager.Instance.PlaySFX(SFXType.ArriveGoal);
                 SceneManagerController.Instance.StartSceneTransition(SceneManagerController.Instance.nextSceneName);

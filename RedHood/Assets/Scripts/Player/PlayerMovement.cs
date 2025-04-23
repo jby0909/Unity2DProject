@@ -70,4 +70,9 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
     }
+
+    public void ResetPosition()
+    {
+        transform.position = new Vector3(-9.35f, -4.04f, 0);
+    }
 }

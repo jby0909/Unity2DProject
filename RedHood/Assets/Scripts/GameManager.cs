@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
         if(Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -122,4 +123,6 @@ public class GameManager : MonoBehaviour
         currentBreadCount = 0;
         breadText.text = currentBreadCount.ToString();
     }
+
+    
 }
