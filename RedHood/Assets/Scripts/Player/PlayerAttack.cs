@@ -21,7 +21,6 @@ public class PlayerAttack : MonoBehaviour
     
     private int playerMp = 0;
     private int maxPlayerMp = 3;
-    public GameObject[] mpUI;
 
     public event Action onPlayerMpTutorial;
 
@@ -84,14 +83,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void UpdateMpUI()
     {
-        for(int i = 0; i < playerMp; i++)
-        {
-            mpUI[i].SetActive(true);
-        }
-        for(int i = playerMp; i < maxPlayerMp; i++)
-        {
-            mpUI[i].SetActive(false);
-        }
+        UIManager.Instance.Ingame.UpdateMP(playerMp);
     }
 
     private IEnumerator AttackCooldownByAnimation()
@@ -173,6 +165,7 @@ public class PlayerAttack : MonoBehaviour
     public void ResetMp()
     {
         playerMp = 0;
+        UpdateMpUI();
     }
 
     

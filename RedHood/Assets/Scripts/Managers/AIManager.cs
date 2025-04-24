@@ -59,7 +59,7 @@ public class AIManager : MonoBehaviour
         if(monster.monsterType == MonsterType.Wolf)
         {
             minSpeed = 1.0f;
-            maxSpeed = 3.0f;
+            maxSpeed = 2.0f;
             minHp = 10;
             maxHp = 25;
             minDamage = 5;
@@ -68,7 +68,7 @@ public class AIManager : MonoBehaviour
         else if (monster.monsterType == MonsterType.Undead)
         {
             minSpeed = 2.0f;
-            maxSpeed = 5.0f;
+            maxSpeed = 3.0f;
             minHp = 30;
             maxHp = 50;
             minDamage = 15;

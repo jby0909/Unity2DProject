@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public PlayerAttack attack;
     public PlayerHealth health;
 
-    private PlayerAnimation animation;
+    public PlayerAnimation animation;
 
     //공격받았을 때 알파값 조절 및 무적모드
     private SpriteRenderer spriteRenderer;
@@ -27,9 +27,6 @@ public class PlayerController : MonoBehaviour
     private bool isPaused = false;
     public GameObject pauseMenuUI;
 
-    //Hp UI
-    public Slider HpBarUI;
-
     //죽음 판정
     private bool isDead = false;
     private Coroutine deadCoroutine;
@@ -37,6 +34,9 @@ public class PlayerController : MonoBehaviour
 
     //빵 부족 시 활성화할 ui
     public GameObject breadMessageUI;
+
+    //체력회복 시 나타날 파티클 위치
+    public GameObject healParticlePos;
 
 
     private void Awake()
@@ -104,7 +104,7 @@ public class PlayerController : MonoBehaviour
         isDead = true;
         animation.TriggerDead();
         SoundManager.Instance.PlaySFX(SFXType.PlayerDead);
-        StopAllCoroutines();
+        //StopAllCoroutines();
         StartCoroutine(GameOverUIActive());
 
     }
@@ -138,6 +138,13 @@ public class PlayerController : MonoBehaviour
             GameManager.Instance.AddBread();
             Destroy(collision.gameObject);
         }
+        else if(collision.CompareTag("Potion"))
+        {
+            ParticleManager.Instance.ParticlePlay(ParticleType.PlayerHeal, healParticlePos, new Vector3(1, 1, 0));
+            health.PlayerHp += 10;
+            UpdateHpUI();
+            Destroy(collision.gameObject);
+        }
         else if(collision.CompareTag("DeathZone"))
         {
             SoundManager.Instance.PlaySFX(SFXType.PlayerDamage);
@@ -147,16 +154,20 @@ public class PlayerController : MonoBehaviour
         }
         else if(collision.CompareTag("Goal"))
         {
-            if(GameManager.Instance.currentBreadCount >= GameManager.Instance.stageDataDict[GameManager.Instance.currentStageLevel].breadCount)
+            if(GameManager.Instance.currentStageLevel > 0)
             {
-                SoundManager.Instance.PlaySFX(SFXType.ArriveGoal);
-                SceneManagerController.Instance.StartSceneTransition(SceneManagerController.Instance.nextSceneName);
+                if (GameManager.Instance.currentBreadCount >= GameManager.Instance.stageDataDict[GameManager.Instance.currentStageLevel - 1].breadCount)
+                {
+                    SoundManager.Instance.PlaySFX(SFXType.ArriveGoal);
+                    SceneManagerController.Instance.StartSceneTransition(SceneManagerController.Instance.nextSceneName);
+                }
+                else
+                {
+                    //빵 부족하다는 ui 활성화(2초뒤에 사라지기 -> 코루틴으로 구현)
+                    StartCoroutine(BreadMessageUIActive());
+                }
             }
-            else
-            {
-                //빵 부족하다는 ui 활성화(2초뒤에 사라지기 -> 코루틴으로 구현)
-                StartCoroutine(BreadMessageUIActive());
-            }
+           
         }
         
     }
@@ -207,7 +218,13 @@ public class PlayerController : MonoBehaviour
     {
         float hpRate = (float)health.PlayerHp / (float)health.MaxHp;
         Debug.Log($"남은 hp : {health.PlayerHp}/ 비율 : {hpRate}");
-        HpBarUI.value = hpRate;
+        UIManager.Instance.Ingame.UpdateHpBar(hpRate);
+    }
+
+    public void ResetDead()
+    {
+        isDead = false;
+        UpdateHpUI();
     }
 
     IEnumerator Invincibility()

@@ -74,7 +74,6 @@ public class MonsterManager : MonoBehaviour
 
         stateChangeRoutine = StartCoroutine(RandomStateChanger());
 
-        Debug.Log($"speed : {speed} \n hp : {monsterHp} \n damage : {damage}");
     }
 
     private void Update()
@@ -118,7 +117,6 @@ public class MonsterManager : MonoBehaviour
 
                 int chaseType = UnityEngine.Random.Range(0, 2);
                 stateType = chaseType == 0? StateType.ChaseWalk : StateType.ChaseRun;
-                Debug.Log($"[상태 전환] 추적 상태 : {stateType}");
             }
             Vector3 directionToPlayer = new Vector3(player.position.x - transform.position.x, 0, 0).normalized;
             //Vector3 directionToPlayer = (player.position - transform.position + new Vector3(0, 1, 0)).normalized;
@@ -245,17 +243,17 @@ public class MonsterManager : MonoBehaviour
             yield return new WaitForSeconds(stateChangeInterval);
             int randomState = UnityEngine.Random.Range(0, 3);
             stateType = (StateType)randomState;
-            Debug.Log($"[랜덤 상태 전환] 현재 상태 : {stateType}");
         }
     }
 
     IEnumerator AttackRoutine()
     {
         isAttacking = true;
-        Debug.Log("[공격 상태] 공격 시작");
+        //Debug.Log("[공격 상태] 공격 시작");
+        animator.SetTrigger("Attack");
         yield return new WaitForSeconds(1.0f);
         isAttacking = false;
-        Debug.Log("[공격 상태] 공격 종료, 상태 복귀");
+        //Debug.Log("[공격 상태] 공격 종료, 상태 복귀");
         stateChangeRoutine = StartCoroutine(RandomStateChanger());
     }
 

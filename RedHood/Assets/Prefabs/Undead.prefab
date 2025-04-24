@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 6288068453116507401}
   - component: {fileID: 32342925735221054}
   - component: {fileID: 9069978198760147602}
-  - component: {fileID: 7384421495768571887}
   - component: {fileID: 6492276355966211449}
+  - component: {fileID: 3716324216588046269}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Undead
   m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 21.91, y: -0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -112,8 +112,32 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!61 &7384421495768571887
-BoxCollider2D:
+--- !u!114 &6492276355966211449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 853879272862934156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 135aeaeffc7177b4e8a7acef3aefad92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorChangeDuration: 0.5
+  monsterHp: 50
+  speed: 5
+  maxDistance: 6
+  currentGroundType: 3
+  monsterType: 1
+  damage: 5
+  stateType: 0
+  player: {fileID: 0}
+  chaseRange: 5
+  attackRange: 1.5
+  isAttacking: 0
+--- !u!70 &3716324216588046269
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -146,32 +170,6 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.47, y: 0.64}
-    newSize: {x: 0.49, y: 0.69}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 0.5, y: 0.69}
-  m_EdgeRadius: 0
---- !u!114 &6492276355966211449
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 853879272862934156}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 135aeaeffc7177b4e8a7acef3aefad92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colorChangeDuration: 0.5
-  speed: 1
-  maxDistance: 3
-  currentGroundType: 1
-  monsterType: 1
+  m_Offset: {x: 0.11685484, y: -0.048116732}
+  m_Size: {x: 0.23629032, y: 0.5437666}
+  m_Direction: 0

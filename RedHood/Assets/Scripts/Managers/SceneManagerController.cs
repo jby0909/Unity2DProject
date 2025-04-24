@@ -11,10 +11,11 @@ public class SceneManagerController : MonoBehaviour
     public Image panel;
     public float fadeDuration = 1.0f;
     public string nextSceneName;
+    public string currentSceneName;
     private bool isFading = false;
 
-    private string[] sceneNames = {"Tutorial", "Stage1", "Stage2" };
-    public int sceneNamesIndex = 0;
+    private string[] nextSceneNames = {"Tutorial", "Stage1", "Stage2", "Menu" };
+    public int NextSceneNamesIndex = 0;
 
     public bool isTutorial = false;
 
@@ -45,6 +46,7 @@ public class SceneManagerController : MonoBehaviour
         if(!isFading)
         {
             nextSceneName = sceneName;
+            currentSceneName = GetActiveScene();
             StartCoroutine(FadeInAndLoadScene());
            
             
@@ -62,21 +64,24 @@ public class SceneManagerController : MonoBehaviour
 
         yield return StartCoroutine(LoadLoadingAndNextScene());
 
-        if (GetActiveScene().CompareTo("Menu") == 0)
+        if (nextSceneName.CompareTo("Menu") == 0)
         {
             isTutorial = false;
-            sceneNamesIndex = 0;
+            NextSceneNamesIndex = 0;
             GameManager.Instance.currentStageLevel = 0;
 
-            menuUI.SetActive(true);
-            inGameUI.SetActive(false);
-            cinemachineCamera.SetActive(false);
-            player.SetActive(false);
-            //모든 값 리셋
-            PlayerController.Instance.movement.ResetPosition();
             PlayerController.Instance.health.ResetHp();
+            PlayerController.Instance.ResetDead();
             PlayerController.Instance.attack.ResetMp();
+            PlayerController.Instance.animation.ResetAnimation();
+            PlayerController.Instance.movement.ResetPosition();
             GameManager.Instance.ResetBread();
+            UIManager.Instance.OnMenu(true);
+            UIManager.Instance.OnIngame(false);
+            cinemachineCamera?.SetActive(false);
+            player?.SetActive(true);
+            //모든 값 리셋
+            
 
         }
         else
@@ -89,20 +94,41 @@ public class SceneManagerController : MonoBehaviour
             {
                 isTutorial = false;
             }
-            if(nextSceneName.CompareTo(GetActiveScene()) != 0)
+
+            if (nextSceneName.CompareTo(currentSceneName) != 0)
             {
                 GameManager.Instance.currentStageLevel++;
+                NextSceneNamesIndex = (NextSceneNamesIndex + 1) % nextSceneNames.Length;
+
             }
-            
-            sceneNamesIndex = (sceneNamesIndex + 1) % sceneNames.Length;
-            menuUI.SetActive(false);
-            inGameUI.SetActive(true);
+            else
+            {
+                //만약 restart 라면(다음 씬과 현재 씬이 같다면)
+                //모든 값 리셋
+                PlayerController.Instance.health.ResetHp();
+                PlayerController.Instance.ResetDead();
+                PlayerController.Instance.attack.ResetMp();
+                PlayerController.Instance.animation.ResetAnimation();
+                if(GameManager.Instance.currentStageLevel - 2 >= 0)
+                {
+                    GameManager.Instance.ResetBread(GameManager.Instance.stageDataDict[GameManager.Instance.currentStageLevel - 2].breadCount);
+                }
+                else
+                {
+                    GameManager.Instance.ResetBread();
+                }
+                
+
+            }
+
+            UIManager.Instance.OnMenu(false);
+            UIManager.Instance.OnIngame(true);
             cinemachineCamera.SetActive(true);
             player.SetActive(true);
             //플레이어 위치 시작부분으로 리셋
             PlayerController.Instance.movement.ResetPosition();
         }
-        nextSceneName = sceneNames[sceneNamesIndex];
+        nextSceneName = nextSceneNames[NextSceneNamesIndex];
 
         if(sceneOnLoad != null)
         {

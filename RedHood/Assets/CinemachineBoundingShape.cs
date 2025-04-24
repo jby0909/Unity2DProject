@@ -14,6 +14,6 @@ public class CinemachineBoundingShape : MonoBehaviour
     
     public void ChangeCollider()
     {
-        CinemachineConfiner2D.BoundingShape2D = colliders[SceneManagerController.Instance.sceneNamesIndex];
+        CinemachineConfiner2D.BoundingShape2D = colliders[SceneManagerController.Instance.NextSceneNamesIndex];
     }
 }

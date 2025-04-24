@@ -4,8 +4,13 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
 
+    [SerializeField] private UIMenu menu;
+    [SerializeField] private UIIngame ingame;
+
+    public UIMenu Menu => menu;
+    public UIIngame Ingame => ingame;
     
-    void Start()
+    void Awake()
     {
         if(Instance == null)
         {
@@ -16,7 +21,16 @@ public class UIManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
     }
 
-    
+    public void OnMenu(bool active)
+    {
+        menu.SetActivePanel(active);
+    }
+    public void OnIngame(bool active)
+    {
+        ingame.SetActivePanel(active);
+    }
+
 }

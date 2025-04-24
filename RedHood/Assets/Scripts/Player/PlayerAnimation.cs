@@ -58,6 +58,11 @@ public class PlayerAnimation : MonoBehaviour
         animator.SetTrigger("Hurt");
     }
 
+    public void ResetAnimation()
+    {
+        animator.Play("Idle");
+    }
+
     public bool IsJumpState()
     {
         AnimatorStateInfo info = animator.GetCurrentAnimatorStateInfo(0);

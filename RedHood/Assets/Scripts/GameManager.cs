@@ -14,7 +14,6 @@ public class GameManager : MonoBehaviour
     public int currentBreadCount = 0;
 
     public Text coinText;
-    public Text breadText;
 
     private const string COIN_KEY = "CoinCount";
     private const string DAMAGE_KEY = "PlayerDamage";
@@ -55,7 +54,7 @@ public class GameManager : MonoBehaviour
     public void AddBread()
     {
         currentBreadCount++;
-        breadText.text = currentBreadCount.ToString();
+        UIManager.Instance.Ingame.UpdateBreadCount(currentBreadCount);
         SoundManager.Instance.PlaySFX(SFXType.PlayerGetItem2);
     }
 
@@ -118,10 +117,10 @@ public class GameManager : MonoBehaviour
         //PlayerPrefs.SetInt("Coin", coinCount);
     }
 
-    public void ResetBread()
+    public void ResetBread(int prevBreadCount = 0)
     {
-        currentBreadCount = 0;
-        breadText.text = currentBreadCount.ToString();
+        currentBreadCount = prevBreadCount;
+        UIManager.Instance.Ingame.UpdateBreadCount(currentBreadCount);
     }
 
     
