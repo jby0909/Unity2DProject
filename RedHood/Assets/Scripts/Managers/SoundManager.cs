@@ -214,6 +214,7 @@ public enum SFXType
     PlayerJump,
     PlayerGetItem,
     PlayerGetItem2,
+    PlayerEatApple,
     PlayerFootStep,
     PlayerDead,
     EnemyAttack,

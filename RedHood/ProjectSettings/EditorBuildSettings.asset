@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Stage2.unity
     guid: 96c5c0f8d0b597546893ae2e2ac1536d
   - enabled: 1
+    path: Assets/Scenes/GameClear.unity
+    guid: 4ebe3bcb311ab7a4db6c42749b03fc0a
+  - enabled: 1
     path: Assets/Scenes/LoadingScene.unity
     guid: 2f2aa0ae5bcb58b4c834f53a81251dff
   m_configObjects:

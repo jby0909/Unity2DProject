@@ -41,7 +41,7 @@ public class CameraShake : MonoBehaviour
     {
         if (impulseSource != null)
         {
-            Debug.Log("카메라 임펄스 발생");
+            //Debug.Log("카메라 임펄스 발생");
             impulseSource.GenerateImpulse();
         }
         else

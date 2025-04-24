@@ -14,7 +14,7 @@ public class SceneManagerController : MonoBehaviour
     public string currentSceneName;
     private bool isFading = false;
 
-    private string[] nextSceneNames = {"Tutorial", "Stage1", "Stage2", "Menu" };
+    private string[] nextSceneNames = {"Tutorial", "Stage1", "Stage2", "GameClear","Menu" };
     public int NextSceneNamesIndex = 0;
 
     public bool isTutorial = false;

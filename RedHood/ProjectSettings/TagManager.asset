@@ -10,6 +10,7 @@ TagManager:
   - Monster
   - Goal
   - Potion
+  - House
   layers:
   - Default
   - TransparentFX

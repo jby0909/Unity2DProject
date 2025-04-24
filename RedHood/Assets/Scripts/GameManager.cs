@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
         foreach (var stage in arr)
         {
             stageDataDict[stage.stageLevel] = stage;
-            Debug.Log($"{stage.stageLevel} : {stage.breadCount}");
+            
         }
     }
 

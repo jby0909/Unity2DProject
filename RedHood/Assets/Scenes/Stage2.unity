@@ -1305,6 +1305,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Undead
       objectReference: {fileID: 0}
+    - target: {fileID: 853879272862934156, guid: c4b94891ff8c26346be59ed4ae6a93d8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3716324216588046269, guid: c4b94891ff8c26346be59ed4ae6a93d8, type: 3}
       propertyPath: m_Size.x
       value: 0.20241098
@@ -4977,6 +4981,37 @@ RectTransform:
   m_AnchoredPosition: {x: 27.100037, y: -43.5}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &517002231
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 517002232}
+  m_Layer: 0
+  m_Name: SpawnPoint (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &517002232
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 517002231}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -15.33, y: 15.78, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1804932085}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -19030,6 +19065,7 @@ Transform:
   m_Children:
   - {fileID: 382556566}
   - {fileID: 430022919}
+  - {fileID: 517002232}
   - {fileID: 607764989}
   - {fileID: 2109608247}
   m_Father: {fileID: 0}
@@ -22525,6 +22561,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2609463353873312800, guid: 1fb07d763c9f8154fb05e455e29d9966, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4897514867698725190, guid: 1fb07d763c9f8154fb05e455e29d9966, type: 3}
       propertyPath: 'mpUI.Array.data[0]'
       value: 
@@ -22537,6 +22577,10 @@ PrefabInstance:
       propertyPath: 'mpUI.Array.data[2]'
       value: 
       objectReference: {fileID: 1005292776}
+    - target: {fileID: 8692826563546944359, guid: 1fb07d763c9f8154fb05e455e29d9966, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9005284241112137714, guid: 1fb07d763c9f8154fb05e455e29d9966, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.35

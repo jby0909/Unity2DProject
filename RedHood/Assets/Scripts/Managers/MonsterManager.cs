@@ -127,7 +127,7 @@ public class MonsterManager : MonoBehaviour
 
         if((stateType == StateType.ChaseWalk || stateType == StateType.ChaseRun) && distanceToPlayer > chaseRange)
         {
-            Debug.Log("[상태 복귀] 추적 종료");
+            //Debug.Log("[상태 복귀] 추적 종료");
             stateType = StateType.Idle;
             if(stateChangeRoutine == null)
             {
@@ -251,6 +251,7 @@ public class MonsterManager : MonoBehaviour
         isAttacking = true;
         //Debug.Log("[공격 상태] 공격 시작");
         animator.SetTrigger("Attack");
+        SoundManager.Instance.PlaySFX(SFXType.EnemyAttack);
         yield return new WaitForSeconds(1.0f);
         isAttacking = false;
         //Debug.Log("[공격 상태] 공격 종료, 상태 복귀");

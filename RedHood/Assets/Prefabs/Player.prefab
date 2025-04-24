@@ -145,9 +145,10 @@ MonoBehaviour:
   isKnockback: 0
   knockbackDuration: 0.5
   pauseMenuUI: {fileID: 0}
-  HpBarUI: {fileID: 0}
   gameOverUI: {fileID: 0}
   breadMessageUI: {fileID: 0}
+  arriveHouseMessageUI: {fileID: 0}
+  gameClearUI: {fileID: 0}
   healParticlePos: {fileID: 4215419548370329859}
 --- !u!114 &5756312708427219997
 MonoBehaviour:
@@ -185,10 +186,6 @@ MonoBehaviour:
   - {fileID: 9200256514414536845}
   attackStateName: Attack
   attack: 5
-  mpUI:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!114 &2911142874174743544
 MonoBehaviour:
   m_ObjectHideFlags: 0

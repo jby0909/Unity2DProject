@@ -34,6 +34,10 @@ public class PlayerController : MonoBehaviour
 
     //빵 부족 시 활성화할 ui
     public GameObject breadMessageUI;
+    //집 도착 시 활성화할 ui
+    public GameObject arriveHouseMessageUI;
+    //게임 클리어 ui
+    public GameObject gameClearUI;
 
     //체력회복 시 나타날 파티클 위치
     public GameObject healParticlePos;
@@ -141,6 +145,7 @@ public class PlayerController : MonoBehaviour
         else if(collision.CompareTag("Potion"))
         {
             ParticleManager.Instance.ParticlePlay(ParticleType.PlayerHeal, healParticlePos, new Vector3(1, 1, 0));
+            SoundManager.Instance.PlaySFX(SFXType.PlayerEatApple);
             health.PlayerHp += 10;
             UpdateHpUI();
             Destroy(collision.gameObject);
@@ -164,19 +169,31 @@ public class PlayerController : MonoBehaviour
                 else
                 {
                     //빵 부족하다는 ui 활성화(2초뒤에 사라지기 -> 코루틴으로 구현)
-                    StartCoroutine(BreadMessageUIActive());
+                    StartCoroutine(MessageUIActive(breadMessageUI));
                 }
             }
            
         }
+        else if(collision.CompareTag("House"))
+        {
+            //집 도착 시 UI활성화(2초 뒤 사라지기)
+            StartCoroutine(MessageUIActive(arriveHouseMessageUI));
+            StartCoroutine(GameClearUIActive());
+        }
         
     }
 
-    IEnumerator BreadMessageUIActive()
+    IEnumerator MessageUIActive(GameObject uiObject)
     {
-        breadMessageUI.SetActive(true);
+        uiObject.SetActive(true);
         yield return new WaitForSeconds(2.0f);
-        breadMessageUI.SetActive(false);
+        uiObject.SetActive(false);
+    }
+
+    IEnumerator GameClearUIActive()
+    {
+        yield return new WaitForSeconds(2.2f);
+        gameClearUI.SetActive(true);
     }
 
     public void OnDamaged(float attack)
@@ -217,7 +234,6 @@ public class PlayerController : MonoBehaviour
     private void UpdateHpUI()
     {
         float hpRate = (float)health.PlayerHp / (float)health.MaxHp;
-        Debug.Log($"남은 hp : {health.PlayerHp}/ 비율 : {hpRate}");
         UIManager.Instance.Ingame.UpdateHpBar(hpRate);
     }
 
